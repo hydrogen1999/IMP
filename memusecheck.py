@@ -3,7 +3,7 @@ from skimage import io, filters, feature, img_as_float32
 from skimage.transform import rescale
 from skimage.color import rgb2gray
 from helpers import cheat_interest_points, evaluate_correspondence
-import student
+import core
 
 
 def memfunc():
@@ -19,13 +19,13 @@ def memfunc():
     image1 = img_as_float32(rescale(rgb2gray(io.imread(image1_file)),scale_factor))
     image2 = img_as_float32(rescale(rgb2gray(io.imread(image2_file)),scale_factor))
     
-    (x1, y1) = student.get_interest_points(image1, feature_width)
-    (x2, y2) = student.get_interest_points(image2, feature_width)
+    (x1, y1) = core.get_interest_points(image1, feature_width)
+    (x2, y2) = core.get_interest_points(image2, feature_width)
     
-    image1_features = student.get_features(image1, x1, y1, feature_width)
-    image2_features = student.get_features(image2, x2, y2, feature_width)
+    image1_features = core.get_features(image1, x1, y1, feature_width)
+    image2_features = core.get_features(image2, x2, y2, feature_width)
         
-    matches, confidences = student.match_features(image1_features, image2_features)
+    matches, confidences = core.match_features(image1_features, image2_features)
 
     evaluate_correspondence(image1, image2, eval_file, scale_factor,
         x1, y1, x2, y2, matches, confidences, 0)

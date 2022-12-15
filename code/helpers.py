@@ -1,8 +1,3 @@
-# A set of helpers which are useful for debugging SIFT!
-# Feel free to take a look around in case you are curious,
-# but you shouldn't need to know exactly what goes on,
-# and you certainly don't need to change anything
-#and vfbhdfbbhdbd
 import scipy.io as scio
 import skimage
 import numpy as np
@@ -10,8 +5,7 @@ import visualize
 import matplotlib.pyplot as plt
 import math
 
-# Gives you the TA solution for the interest points you
-# should find
+
 def cheat_interest_points(eval_file, scale_factor):
 
 	file_contents = scio.loadmat(eval_file)
@@ -34,11 +28,6 @@ def cheat_interest_points(eval_file, scale_factor):
 	return x1, y1, x2, y2
 
 def estimate_fundamental_matrix(Points_a,Points_b):
-	# Get linear system of eqns
-	# each row will be:
-	# [u'u u'v u' v'u v'v v' u v 1]
-	# found from rearranging the defn of the fundamental matrix
-	# we assume the prime image is image B
 
 	n = Points_b.shape[0]
 	u_prime = np.copy(Points_b[:,0])
